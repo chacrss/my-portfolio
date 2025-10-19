@@ -1,0 +1,542 @@
+.planet-blue {
+  width: 120px; 
+  height: 120px;
+  background: radial-gradient(circle at 30% 30%, #4cc9f0, #4361ee, #3a0ca3);
+  top: 25%; 
+  left: 15%;
+  animation-duration: 90s;
+  transform: rotateX(60deg);
+}
+
+/* Responsive planet sizing */
+@media (max-width: 1200px) {
+  .planet-blue {
+    width: 100px;
+    height: 100px;
+    left: 12%;
+  }
+}
+
+@media (max-width: 768px) {
+  .planet-blue {
+    width: 80px;
+    height: 80px;
+    left: 8%;
+    top: 20%;
+  }
+}
+
+@media (max-width: 480px) {
+  .planet-blue {
+    width: 60px;
+    height: 60px;
+    left: 5%;
+    top: 15%;
+  }
+}
+
+/* About Me Popup - Fully Responsive */
+.planet1-popup .modal-content {
+  background: rgba(15, 20, 40, 0.6);
+  border: 2px solid rgba(0, 255, 255, 0.6);
+  border-radius: 20px;
+  padding: 30px;
+  width: 70%;
+  max-width: 800px;
+  margin: 5% auto;
+  text-align: center;
+  font-family: "Orbitron", sans-serif;
+  color: #dff9ff;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.6), inset 0 0 30px rgba(0, 180, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  animation: holoCardFade 0.8s ease-out;
+}
+
+@media (max-width: 1024px) {
+  .planet1-popup .modal-content {
+    width: 85%;
+    padding: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .planet1-popup .modal-content {
+    width: 90%;
+    padding: 20px;
+    border-radius: 15px;
+  }
+}
+
+@media (max-width: 640px) {
+  .planet1-popup .modal-content {
+    width: 95%;
+    max-width: 95%;
+    padding: 18px;
+    margin: 3% auto;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .planet1-popup .modal-content {
+    width: 96%;
+    padding: 15px;
+    margin: 2% auto;
+  }
+}
+
+/* Holographic glow border animation */
+.planet1-popup .modal-content::before {
+  content: "";
+  position: absolute;
+  top: -2px; 
+  left: -2px; 
+  right: -2px; 
+  bottom: -2px;
+  border-radius: 22px;
+  padding: 2px;
+  background: linear-gradient(45deg, #00f7ff, #8a2be2, #00eaff, #ff00ff);
+  background-size: 400% 400%;
+  animation: borderGlow 8s linear infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+@media (max-width: 640px) {
+  .planet1-popup .modal-content::before {
+    border-radius: 14px;
+  }
+}
+
+/* 🧑‍🚀 About Me Card */
+.aboutme-card {
+  text-align: center;
+  color: #e0faff;
+  font-family: 'FuturisticFont', sans-serif;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .aboutme-card {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutme-card {
+    padding: 10px;
+  }
+}
+
+.aboutme-card h2 {
+  color: #00ffff;
+  text-shadow: 0 0 10px #00ffff99;
+  margin-bottom: 15px;
+  font-size: 2rem;
+}
+
+@media (max-width: 768px) {
+  .aboutme-card h2 {
+    font-size: 1.75rem;
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutme-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+}
+
+/* 🌌 Avatar Image - Fully Responsive with Image Load Support */
+.aboutme-card .avatar-img,
+.avatar-img {
+  display: block !important;
+  margin: 0 auto 20px auto !important;
+  width: 160px !important;
+  height: 160px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  border: 3px solid rgba(0, 255, 255, 0.6) !important;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.4),
+    0 0 40px rgba(0, 255, 255, 0.2) !important;
+  transition: 
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    border-color 0.4s ease !important;
+  position: relative !important;
+  z-index: 10 !important;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+  pointer-events: auto !important;
+  image-rendering: auto !important;
+  -webkit-user-drag: none !important;
+}
+
+.aboutme-card .avatar-img:hover,
+.avatar-img:hover {
+  transform: scale(1.08) !important;
+  border-color: #00ffff !important;
+  box-shadow:
+    0 0 30px rgba(0, 255, 255, 0.8),
+    0 0 60px rgba(0, 255, 255, 0.4),
+    0 0 80px rgba(0, 255, 255, 0.2) !important;
+}
+
+@media (max-width: 768px) {
+  .aboutme-card .avatar-img,
+  .avatar-img {
+    width: 140px !important;
+    height: 140px !important;
+    margin-bottom: 18px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutme-card .avatar-img,
+  .avatar-img {
+    width: 120px !important;
+    height: 120px !important;
+    margin-bottom: 15px !important;
+    border-width: 2px !important;
+  }
+}
+
+/* 🪐 Info text - Responsive */
+.aboutme-card .info {
+  text-align: left;
+  margin: 0 auto;
+  max-width: 400px;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+@media (max-width: 768px) {
+  .aboutme-card .info {
+    max-width: 350px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutme-card .info {
+    max-width: 100%;
+    font-size: 13px;
+    line-height: 1.4;
+    padding: 0 5px;
+  }
+}
+
+.aboutme-card .info p {
+  margin: 10px 0;
+}
+
+@media (max-width: 480px) {
+  .aboutme-card .info p {
+    margin: 8px 0;
+  }
+}
+
+/* 💡 Buttons - Touch-friendly */
+.about-me-card .actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+  .about-me-card .actions {
+    margin-top: 15px;
+    gap: 8px;
+  }
+}
+
+.holo-btn {
+  background: linear-gradient(90deg, #00ffff88, #0077ff88);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  text-shadow: 0 0 5px #00ffff;
+  transition: all 0.3s ease;
+  min-height: 40px;
+  font-size: 14px;
+  pointer-events: auto;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.holo-btn:hover {
+  background: linear-gradient(90deg, #00ffff, #00ccff);
+  box-shadow: 0 0 15px #00ffff;
+  transform: translateY(-2px);
+}
+
+.holo-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 10px #00ffff;
+}
+
+@media (max-width: 480px) {
+  .holo-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+    min-height: 36px;
+    border-radius: 10px;
+  }
+}
+
+/* Touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .holo-btn {
+    min-height: 44px;
+    padding: 12px 22px;
+    font-size: 15px;
+  }
+  
+  .aboutme-card .avatar-img:active,
+  .avatar-img:active {
+    transform: scale(1.05) !important;
+  }
+}
+
+/* Avatar pulse animation */
+@keyframes avatarPulse {
+  0% {
+    box-shadow:
+      0 0 20px rgba(0, 255, 255, 0.4),
+      0 0 40px rgba(0, 255, 255, 0.2);
+  }
+  100% {
+    box-shadow:
+      0 0 35px rgba(0, 255, 255, 0.7),
+      0 0 60px rgba(0, 255, 255, 0.3);
+  }
+}
+
+.aboutme-card .avatar-img,
+.avatar-img {
+  animation: avatarPulse 2.5s ease-in-out infinite alternate;
+}
+
+/* Animations */
+@keyframes borderGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes holoCardFade {
+  from { opacity: 0; transform: translateY(-20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.4; }
+}
+
+/* Landscape mobile optimization */
+@media (max-height: 500px) and (orientation: landscape) {
+  .aboutme-card .avatar-img,
+  .avatar-img {
+    width: 100px !important;
+    height: 100px !important;
+    margin-bottom: 10px !important;
+  }
+  
+  .aboutme-card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+  }
+  
+  .aboutme-card .info {
+    font-size: 12px;
+  }
+  
+  .planet1-popup .modal-content {
+    padding: 12px;
+    margin: 1% auto;
+  }
+}
+
+/* Prevent duplicate images - Multiple selectors for safety */
+.aboutme-card img:not(.avatar-img) {
+  display: none !important;
+}
+
+.aboutme-card .avatar-img ~ .avatar-img {
+  display: none !important;
+}
+
+.modal-content .aboutme-card img:not(:first-of-type) {
+  display: none !important;
+}
+
+/* Force first avatar to show */
+.aboutme-card > img.avatar-img:first-of-type {
+  display: block !important;
+}
+
+/* Hide any other images in aboutme-card */
+.aboutme-card > *:not(h2):not(.info):not(.avatar-img:first-of-type) img {
+  display: none !important;
+}
+
+/* ðŸ§'â€ðŸš€ About Me Card */
+.aboutme-card {
+  text-align: center;
+  color: #e0faff;
+  font-family: 'FuturisticFont', sans-serif;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 🚀 Hero Badge */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(0, 119, 255, 0.1));
+  border: 2px solid rgba(0, 255, 255, 0.4);
+  border-radius: 30px;
+  margin-bottom: 20px;
+  animation: badge-pulse 3s ease-in-out infinite;
+}
+
+.badge-icon {
+  font-size: 24px;
+  animation: rocket-float 2s ease-in-out infinite;
+}
+
+.badge-text {
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #00ffff;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+}
+
+/* ✨ Tagline Section */
+.tagline {
+  margin: 20px auto;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.05), rgba(138, 43, 226, 0.05));
+  border-left: 4px solid #00ffff;
+  border-radius: 8px;
+  max-width: 500px;
+}
+
+.catchphrase {
+  font-size: 18px;
+  font-style: italic;
+  color: #00ffff;
+  text-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+  margin: 0;
+  line-height: 1.6;
+  animation: text-glow 3s ease-in-out infinite;
+  position: relative;
+}
+
+.catchphrase::before,
+.catchphrase::after {
+  content: '"';
+  font-size: 32px;
+  color: rgba(0, 255, 255, 0.3);
+  font-family: Georgia, serif;
+}
+
+/* Badge Animations */
+@keyframes badge-pulse {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    border-color: rgba(0, 255, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+    border-color: rgba(0, 255, 255, 0.8);
+  }
+}
+
+@keyframes rocket-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes text-glow {
+  0%, 100% {
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+  }
+  50% {
+    text-shadow: 0 0 25px rgba(0, 255, 255, 0.9), 0 0 35px rgba(0, 255, 255, 0.5);
+  }
+}
+
+/* Responsive Badge */
+@media (max-width: 768px) {
+  .hero-badge {
+    padding: 10px 20px;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .badge-icon {
+    font-size: 20px;
+  }
+  
+  .badge-text {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+  }
+  
+  .tagline {
+    padding: 15px;
+  }
+  
+  .catchphrase {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-badge {
+    padding: 8px 16px;
+  }
+  
+  .badge-text {
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+  
+  .tagline {
+    padding: 12px;
+  }
+  
+  .catchphrase {
+    font-size: 14px;
+  }
+  
+  .catchphrase::before,
+  .catchphrase::after {
+    font-size: 24px;
+  }
+}

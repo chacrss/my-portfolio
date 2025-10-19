@@ -1,0 +1,398 @@
+/* ========================================
+   ULTIMATE SCROLL FIX - COMPLETE VERSION
+   This is the ONLY CSS file you need for scrolling
+   Load this LAST in your HTML
+   ======================================== */
+
+/* Reset everything first */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Modal backdrop - should NOT scroll */
+.modal {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  display: none;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 9999 !important;
+  padding: 16px !important;
+  background: rgba(10, 10, 30, 0.85) !important;
+  backdrop-filter: blur(10px);
+}
+
+.modal.open {
+  display: flex !important;
+}
+
+/* Modal content - THIS IS WHAT SCROLLS */
+.modal-content,
+#modalBody {
+  position: relative !important;
+  width: 90vw !important;
+  max-width: 850px !important;
+  height: auto !important;
+  max-height: 85vh !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior-y: contain !important;
+  background: rgba(20, 20, 40, 0.95) !important;
+  border-radius: 16px !important;
+  padding: 24px !important;
+  padding-top: 50px !important;
+  box-sizing: border-box !important;
+}
+
+/* Tablet adjustments */
+@media (max-width: 1024px) {
+  .modal-content,
+  #modalBody {
+    width: 92vw !important;
+    max-width: 92vw !important;
+    padding: 20px !important;
+    padding-top: 50px !important;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .modal {
+    padding: 12px !important;
+  }
+  
+  .modal-content,
+  #modalBody {
+    width: 95vw !important;
+    max-width: 95vw !important;
+    max-height: 88vh !important;
+    padding: 18px !important;
+    padding-top: 50px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal {
+    padding: 8px !important;
+  }
+  
+  .modal-content,
+  #modalBody {
+    width: 98vw !important;
+    max-width: 98vw !important;
+    max-height: 92vh !important;
+    padding: 16px !important;
+    padding-top: 50px !important;
+  }
+}
+
+/* Content inside modal - should NOT interfere with scrolling */
+.popup-wrapper,
+.popup-scroll,
+.aboutme-card,
+.projects-card,
+.Project-green,
+.skills-container,
+.service-card,
+.carousel,
+.modal-body {
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+  position: relative !important;
+}
+
+/* Lock body when modal is open */
+body.overlay-open {
+  overflow: hidden !important;
+  position: fixed !important;
+  width: 100% !important;
+  height: 100vh !important;
+  touch-action: none !important;
+}
+
+/* But allow scrolling IN the modal */
+body.overlay-open .modal-content,
+body.overlay-open #modalBody {
+  overflow-y: auto !important;
+  touch-action: pan-y !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+/* Remove ALL planet-specific overflow restrictions */
+.planet1-popup .modal-content,
+.planet2-popup .modal-content,
+.planet3-popup .modal-content,
+.planet4-popup .modal-content,
+.planet-earth-popup .modal-content,
+.planet5-popup .modal-content {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  max-height: 85vh !important;
+}
+
+/* Custom scrollbar for desktop */
+.modal-content::-webkit-scrollbar,
+#modalBody::-webkit-scrollbar {
+  width: 10px;
+}
+
+.modal-content::-webkit-scrollbar-track,
+#modalBody::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
+.modal-content::-webkit-scrollbar-thumb,
+#modalBody::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00ffff, #0077ff);
+  border-radius: 5px;
+  box-shadow: 0 0 10px #00ffffaa;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover,
+#modalBody::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #00ffff, #00ccff);
+}
+
+/* iOS Safari specific - CRITICAL FOR MOBILE SCROLLING */
+@supports (-webkit-touch-callout: none) {
+  .modal-content,
+  #modalBody {
+    -webkit-overflow-scrolling: touch !important;
+    overflow-y: auto !important;
+  }
+}
+
+/* Image duplication fixes */
+.aboutme-card img:not(:first-child) {
+  display: none !important;
+}
+
+.hero-image ~ * img.avatar-img {
+  display: none !important;
+}
+
+.modal-content-card .modal-body img {
+  display: none !important;
+}
+
+.modal-content-card .hero-image img {
+  display: block !important;
+}
+
+.carousel-item img:not(.carousel-img) {
+  display: none !important;
+}
+
+/* Only show first carousel image */
+.carousel-item .carousel-img:not(:first-child) {
+  display: none !important;
+}
+
+/* Mobile card layout */
+.modal-content-card {
+  display: flex !important;
+  flex-direction: column !important;
+  height: auto !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+@media (max-width: 420px) {
+  .modal-content-card {
+    max-height: 90vh !important;
+  }
+  
+  .hero-image {
+    flex-shrink: 0 !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .modal-body {
+    flex: 1 !important;
+    overflow: visible !important;
+  }
+}
+
+/* Landscape orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+  .modal-content,
+  #modalBody {
+    max-height: 95vh !important;
+    padding: 10px !important;
+    padding-top: 50px !important;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .modal-content,
+  #modalBody {
+    -webkit-overflow-scrolling: touch !important;
+    overflow-y: auto !important;
+  }
+}
+
+/* Close button positioning - should not interfere with scroll */
+.close-btn {
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  z-index: 10001 !important;
+  width: 44px !important;
+  height: 44px !important;
+  cursor: pointer !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  color: #fff !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 28px !important;
+  line-height: 1 !important;
+}
+
+.close-btn:hover {
+  background: rgba(255, 0, 0, 0.7) !important;
+  border-color: #ff0000 !important;
+}
+
+/* Ensure all content can flow naturally */
+.modal-content > *,
+#modalBody > * {
+  position: relative !important;
+}
+
+/* Fix for content that might have fixed positioning */
+.modal-content *,
+#modalBody * {
+  max-width: 100% !important;
+}
+
+/* Prevent horizontal scroll */
+.modal-content,
+#modalBody {
+  overflow-x: hidden !important;
+}
+
+/* Avatar image specific */
+.avatar-img {
+  max-width: 160px !important;
+  height: auto !important;
+  display: block !important;
+  margin: 0 auto 20px auto !important;
+}
+
+/* Carousel fixes */
+.carousel {
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+.carousel-track {
+  display: flex !important;
+  transition: transform 0.6s ease !important;
+}
+
+.carousel-item {
+  flex: 0 0 100% !important;
+  min-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.carousel-img {
+  width: 100% !important;
+  max-height: 250px !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+@media (max-width: 768px) {
+  .carousel-img {
+    max-height: 200px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-img {
+    max-height: 160px !important;
+  }
+}
+
+/* Skill bars */
+.skill-bar {
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+/* Service cards */
+.service-card {
+  width: 100% !important;
+  margin-bottom: 15px !important;
+}
+
+/* Forms */
+input, textarea, button {
+  max-width: 100% !important;
+}
+
+/* Lightbox */
+.lightbox-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 10000 !important;
+  background: rgba(0, 0, 0, 0.9) !important;
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 20px !important;
+}
+
+.lightbox-overlay.active {
+  display: flex !important;
+}
+
+.lightbox-content {
+  max-width: 95vw !important;
+  max-height: 95vh !important;
+  overflow: auto !important;
+}
+
+.lightbox-img {
+  max-width: 100% !important;
+  max-height: 90vh !important;
+  object-fit: contain !important;
+}
+
+/* Visual debugging - UNCOMMENT to see scroll container */
+/*
+.modal-content,
+#modalBody {
+  outline: 3px solid red !important;
+}
+
+.modal-content::before,
+#modalBody::before {
+  content: '⬇️ SCROLL HERE ⬇️' !important;
+  position: sticky !important;
+  top: 0 !important;
+  background: red !important;
+  color: white !important;
+  padding: 10px !important;
+  display: block !important;
+  text-align: center !important;
+  z-index: 99999 !important;
+  font-weight: bold !important;
+  font-size: 16px !important;
+}
+*/
+

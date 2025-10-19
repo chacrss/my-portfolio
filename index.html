@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Space Loader</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+
+
+      <!-- 🌟 Hero Text -->
+    <div class="hero-container">
+      <h1 class="hero-title">
+        <span class="hero-line-1">WELCOME TO</span>
+        <span class="hero-line-2">CYBERSPACE</span>
+        <span class="hero-subtitle">// PORTFOLIO EXPLORER //</span>
+      </h1>
+    </div>
+
+    <!-- 🚀 Start Button -->
+    <div class="start-container">
+      <button class="start-btn" onclick="launchSequence()">ENTER SPACE</button>
+    </div>
+
+    
+  <div class="space-loader">
+
+    <!-- 🚀 Astronaut -->
+    <div class="astronaut">
+      <!-- Helmet -->
+      <div class="astronaut-helmet">
+        <div class="helmet-glass">
+          <div class="helmet-inner-glass"></div>
+          <div class="helmet-reflection"></div>
+
+       
+
+          
+
+          <!-- Eyes inside helmet -->
+          <div class="eve-eyes">
+            <div class="eye eye-left"><div class="eye-shape"></div></div>
+            <div class="eye eye-right"><div class="eye-shape"></div></div>
+          </div>
+        </div>
+        <!-- Antenna -->
+        <div class="antenna"></div>
+      </div>
+
+      <!-- Body -->
+      <div class="astronaut-body"></div>
+        <div class="jetpack"></div>
+        <div class="wing wing-left"></div>
+        <div class="wing wing-right"></div>
+        <div class="jet-flame"></div>
+        <div class="triangle-booster"></div>
+
+    </div>
+
+    <!-- 🌌 Space Environment -->
+    <div class="space-environment">
+      <!-- Stars background layers -->
+      <div class="stars-container">
+        <div class="stars stars-near"></div>
+        <div class="stars stars-mid"></div>
+        <div class="stars stars-far"></div>
+      </div>
+
+      
+      <!-- Shooting meteors -->
+      <div class="meteors">
+        <div class="meteor" style="--start-x:-15%;  --delay:0s;  --duration:3s;"></div>
+        <div class="meteor" style="--start-x:-10%; --delay:1s;  --duration:4s;"></div>
+        <div class="meteor" style="--start-x:25%; --delay:2s;  --duration:5s;"></div>
+        <div class="meteor" style="--start-x:35%; --delay:0.5s;--duration:3.5s;"></div>
+        <div class="meteor" style="--start-x:45%; --delay:3s;  --duration:6s;"></div>
+        <div class="meteor" style="--start-x:55%; --delay:1.5s;--duration:4s;"></div>
+        <div class="meteor" style="--start-x:65%; --delay:2.5s;--duration:5s;"></div>
+        <div class="meteor" style="--start-x:75%; --delay:0.2s;--duration:3s;"></div>
+        <div class="meteor" style="--start-x:85%; --delay:4s;  --duration:6.5s;"></div>
+        <div class="meteor" style="--start-x:95%; --delay:2s;  --duration:4.5s;"></div>
+        <div class="meteor" style="--start-x:-80%; --delay:1.1s;--duration:5.5s;"></div>
+        <div class="meteor" style="--start-x:30%; --delay:3.7s;--duration:4.8s;"></div>
+        <div class="meteor" style="--start-x:90%; --delay:2.6s;--duration:9.3s;"></div>
+        <div class="meteor" style="--start-x:12%; --delay:0.6s;--duration:4.1s;"></div>
+      </div>
+    </div>
+
+    <!-- 🚀 Start Button -->
+    <!-- 🚀 Start Button -->
+    <div class="start-container">
+      <button class="start-btn" onclick="launchSequence()">ENTER SPACE</button>
+    </div>
+
+
+    <!-- 🌀 Black Hole -->
+    
+
+    </div>
+
+  <!-- 🌌 Space Environment -->
+<div class="space-environment">
+  <!-- Stars background layers -->
+  <div class="stars-container">
+    <div class="stars stars-near"></div>
+    <div class="stars stars-mid"></div>
+    <div class="stars stars-far"></div>
+  </div>
+
+  <!-- 🌍 Planets -->
+  <div class="planets">
+    <div class="planet planet-blue"></div>
+    <div class="planet planet-red"></div>
+    <div class="planet planet-ring"></div>
+  </div>
+
+  <!-- 🌈 Nebula Clouds -->
+  <div class="nebula nebula-1"></div>
+  <div class="nebula nebula-2"></div>
+
+  
+
+  <!-- ☄️ Shooting meteors -->
+  <div class="meteors">
+    <!-- existing meteors -->
+  </div>
+</div>
+
+<!-- 👾 Alien -->
+
+
+
+
+
+
+
+<div class="black-hole"></div>
+
+  <!-- Astronaut movement script -->
+  <script src="astronaut.js"></script>
+
+ <script>
+function launchSequence() {
+  const astronaut = document.querySelector(".astronaut");
+  const startBtn = document.querySelector(".start-container");
+
+  // Hide button
+  startBtn.style.display = "none";
+
+  // Stop astronaut physics
+  isBoarding = true;
+
+  // Transform after a moment
+  setTimeout(() => {
+    astronaut.classList.add("transformed");
+  }, 500);
+
+  // Blast off
+  setTimeout(() => {
+    astronaut.classList.add("launching");
+  }, 2000);
+
+  // Redirect
+  setTimeout(() => {
+    window.location.href = "landing.html";
+  }, 5000);
+}
+</script>
+
+
+
+</body>
+</html>

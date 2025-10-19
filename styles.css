@@ -1,0 +1,654 @@
+/* 🌌 General page setup */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 🚀 Astronaut container */
+.astronaut {
+  position: absolute;
+  width: 70px;
+  height: 90px;
+  cursor: grab;        /* hand cursor */
+  z-index: 1000;       /* stay above background */
+  transform: scale(5); /* scale astronaut */
+  transform-origin: center;
+}
+.astronaut:active {
+  cursor: grabbing;
+}
+
+
+/* 🪖 Helmet */
+.astronaut-helmet {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  background: #e6e4e4;
+  border-radius: 50%;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: inset -3px -3px 8px rgba(0, 0, 0, 0.2),
+              2px 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+/* Helmet glass */
+.helmet-glass {
+  position: absolute;
+  width: 35px;
+  height: 25px;
+  background: linear-gradient(135deg, rgba(182,183,184,0.4), rgba(154,154,155,0.25));
+  border: 2px solid rgba(150,148,148,0.6);
+  border-radius: 50% 50% 45% 45%;
+  top: 12px;
+  left: 5px;
+  overflow: hidden;
+  box-shadow: inset 0 0 8px rgba(114,114,114,0.4);
+}
+
+/* Inner shine inside glass */
+.helmet-inner-glass {
+  position: absolute;
+  inset: 2px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 50%, rgba(0,0,0,0.1) 100%);
+  border-radius: inherit;
+  animation: glass-shine 3s ease-in-out infinite;
+}
+
+/* Glass reflection circle */
+.helmet-reflection {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), transparent 70%);
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  animation: reflection-move 4s ease-in-out infinite;
+}
+
+/* 👀 Eyes inside helmet */
+.eve-eyes {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 35px;
+  height: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.eye {
+  width: 14px;
+  height: 15px;
+  position: relative;
+  animation: eye-look 8s ease-in-out infinite; /* look around */
+}
+.eye-shape {
+  width: 100%;
+  height: 70%;
+  background: radial-gradient(ellipse at center, rgba(0,200,255,0.9) 0%, rgba(0,150,255,0.6) 40%, rgba(0,80,160,0.3) 70%, transparent 100%);
+  border-radius: 50% / 60%;
+  box-shadow: 0 0 10px rgba(0,200,255,0.8),
+              0 0 20px rgba(0,200,255,0.6);
+  animation: eye-blink 4s ease-in-out infinite; /* blinking */
+}
+
+/* 🟦 Body */
+.astronaut-body {
+  position: absolute;
+  width: 45px;
+  height: 55px;
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  border-radius: 25px;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: inset -4px -4px 8px rgba(0,0,0,0.2),
+              2px 2px 4px rgba(255,255,255,0.1);
+}
+
+/* 📡 Antenna */
+.antenna {
+  position: absolute;
+  width: 3px;
+  height: 15px;
+  background: #13191f;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.antenna::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #33e0ff;
+  border-radius: 50%;
+  top: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: blink 1s ease-in-out infinite;
+}
+
+/* ✨ Stars background layers */
+.stars-container { position: absolute; inset: 0; perspective: 1000px; }
+.stars {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(1px 1px at var(--star-x, 50%) var(--star-y, 50%), white 100%, transparent);
+  opacity: 0.8;
+}
+.stars-near { animation: stars-rotate 20s linear infinite; background-size: 200px 200px; }
+.stars-mid { animation: stars-rotate 30s linear infinite reverse; background-size: 150px 150px; opacity: 0.6; }
+.stars-far { animation: stars-rotate 40s linear infinite; background-size: 100px 100px; opacity: 0.4; }
+
+/* ☄️ Meteors */
+.meteors { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.meteor {
+  position: absolute;
+  width: 2px; height: 2px;
+  background: white;
+  border-radius: 50%;
+  filter: blur(1px);
+  top: var(--start-y, -10%);
+  left: var(--start-x, 0%);
+  animation: meteor-move linear infinite;
+  animation-duration: var(--duration, 4s);
+  animation-delay: var(--delay, 0s);
+}
+.meteor::after {
+  content: "";
+  position: absolute;
+  top: 50%; right: 0;
+  width: 120px; height: 2px;
+  background: linear-gradient(to left, white, transparent);
+  transform: translateY(-50%);
+}
+
+/* 🚀 Start Button */
+/* ðŸš€ Start Button */
+.start-container {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 2000;
+}
+.start-btn {
+  padding: 15px 40px;
+  font-size: 18px;
+  font-family: "Courier New", monospace;
+  color: white;
+  background: transparent;
+  border: 2px solid rgba(0,200,255,0.8);
+  border-radius: 30px;
+  text-shadow: 0 0 15px rgba(0,200,255,0.8);
+  box-shadow: 0 0 20px rgba(0,200,255,0.6);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.start-btn:hover {
+  background: rgba(0,200,255,0.2);
+  box-shadow: 0 0 30px rgba(0,200,255,1), 0 0 60px rgba(0,200,255,0.6);
+  transform: scale(1.05);
+}
+
+/* Responsive button */
+@media (max-width: 768px) {
+  .start-container {
+    bottom: 40px;
+  }
+  
+  .start-btn {
+    padding: 12px 32px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .start-container {
+    bottom: 30px;
+  }
+  
+  .start-btn {
+    padding: 10px 28px;
+    font-size: 15px;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .start-btn {
+    min-height: 44px;
+    padding: 14px 36px;
+  }
+}
+
+/* 🪐 Planets */
+.planets {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.planet {
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: inset -10px -10px 30px rgba(0,0,0,0.4),
+              0 0 40px rgba(255,255,255,0.2);
+  animation: planet-float 60s linear infinite;
+}
+.planet-blue {
+  width: 120px; height: 120px;
+  background: radial-gradient(circle at 30% 30%, #4cc9f0, #4361ee, #3a0ca3);
+  top: 20%; left: 10%;
+  animation-duration: 90s;
+}
+.planet-red {
+  width: 80px; height: 80px;
+  background: radial-gradient(circle at 30% 30%, #ff9e00, #e85d04, #6a040f);
+  bottom: 15%; right: 15%;
+  animation-duration: 70s;
+}
+.planet-ring {
+  width: 100px; height: 100px;
+  background: radial-gradient(circle at 30% 30%, #c8ff00, #60d394, #1b4332);
+  top: 50%; right: 25%;
+  animation-duration: 80s;
+}
+.planet-ring::after {
+  content: "";
+  position: absolute;
+  width: 160px; height: 20px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-radius: 50%;
+  top: 40px; left: -30px;
+  transform: rotateX(60deg);
+}
+
+.nebula {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(100, 1, 1, 0.2) 0%, transparent 70%);
+  filter: blur(120px);
+  animation: swirl 20s infinite alternate ease-in-out;
+}
+
+.nebula-1 { top: 10%; left: 20%; background: radial-gradient(circle, rgba(28, 3, 172, 0.25), transparent 70%); }
+.nebula-2 { bottom: 15%; right: 15%; background: radial-gradient(circle, rgba(9, 49, 0, 0.25), transparent 70%); }
+
+@keyframes swirl {
+  from { transform: rotate(0deg) scale(1); opacity: 0.6; }
+  to { transform: rotate(360deg) scale(1.3); opacity: 0.8; }
+}
+/* ✨ Glow upgrade for loading text */
+.loading-text {
+  color: rgba(255,255,255,0.9);
+  font-family: "Courier New", monospace;
+  font-size: 16px;
+  letter-spacing: 3px;
+  text-shadow: 0 0 15px rgba(0,200,255,0.6),
+               0 0 25px rgba(0,200,255,0.4);
+  animation: pulse-glow 2s infinite alternate;
+}
+
+/* 🌠 Enhanced meteors */
+.meteor {
+  background: white;
+  box-shadow: 0 0 10px rgba(255,255,255,0.8);
+}
+.meteor::after {
+  background: linear-gradient(to left, rgba(255,255,255,0.9), transparent);
+  filter: blur(2px);
+}
+
+/* 🛠️ Jetpack */
+.jetpack {
+  position: absolute;
+  width: 20px;
+  height: 35px;
+  background: linear-gradient(145deg, #666, #333);
+  border-radius: 5px;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%) scale(0); /* hidden until transform */
+  transition: transform 1s ease;
+  z-index: -1;
+}
+
+/* 🪽 Wings */
+.wing {
+  position: absolute;
+  top: 50px;
+  width: 50px;
+  height: 15px;
+  background: linear-gradient(90deg, #00cfff, transparent);
+  border-radius: 10px;
+  opacity: 0;
+  transition: all 1s ease;
+}
+.wing-left { left: -30px; transform: rotate(140deg) scaleX(0); }
+.wing-right { right: -30px; transform: rotate(10deg) scaleX(0); }
+
+/* 🔥 Jet Flame */
+.jet-flame {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  width: 20px;
+  height: 40px;
+  background: radial-gradient(circle at 50% 20%, #ffec99, #ff6b6b, transparent 70%);
+  border-radius: 50%;
+  transform: translateX(-50%) scaleY(0);
+  opacity: 0;
+  animation: none;
+}
+
+/* ✨ Activated State */
+.astronaut.transformed .jetpack {
+  transform: translateX(-50%) scale(1);
+}
+.astronaut.transformed .wing-left {
+  opacity: 1;
+  transform: rotate(140deg) scaleX(1);
+}
+.astronaut.transformed .wing-right {
+  opacity: 1;
+  transform: rotate(40deg) scaleX(1);
+}
+.astronaut.transformed .jet-flame {
+  opacity: 1;
+  transform: translateX(-50%) scaleY(1);
+  animation: flame-flicker 0.3s infinite alternate;
+}
+
+/* 🚀 Blast Off */
+.astronaut.launching {
+  animation: astro-launch 4s forwards ease-in;
+}
+
+.astronaut {
+  transition: transform 3s ease-out, opacity 3s ease-out;
+}
+
+
+/* 🔺 Triangle Booster (hidden initially) */
+.triangle-booster {
+  position: absolute;
+  top: 40px;  /* just below the helmet */
+  left: 50%;
+  width: 5;
+  height: 5;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 50px solid rgba(0,200,255,0.7);
+  transform: translateX(-50%) scale(0);
+  opacity: 0;
+  filter: drop-shadow(0 0 15px rgba(0,200,255,0.8));
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+/* 🌟 When astronaut transforms */
+.astronaut.transformed .triangle-booster {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+}
+
+.astronaut.launching .triangle-booster {
+  animation: booster-glow 0.6s infinite alternate;
+}
+
+@keyframes booster-glow {
+  from { filter: drop-shadow(0 0 10px rgba(0,200,255,0.5)); }
+  to   { filter: drop-shadow(0 0 25px rgba(0,200,255,1)); }
+}
+
+
+
+
+/* 🌀 Black Hole */
+.black-hole {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 0px;
+  height: 0px;
+  border-radius: 50%;
+  background: radial-gradient(circle, black 40%, transparent 70%);
+  box-shadow: 0 0 80px 40px rgba(0,0,0,0.8),
+              0 0 120px 80px rgba(0,0,0,0.5);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  z-index: 3000;
+  pointer-events: none;
+}
+.black-hole.active {
+  animation: blackhole-grow 2.5s forwards;
+}
+
+/* 🌌 Warp effect for everything */
+.space-loader.sucked {
+  animation: sucked-in 2.5s forwards;
+}
+
+/* 🎞️ Keyframes animations */
+@keyframes flame-flicker {
+  from { transform: translateX(-50%) scaleY(0.8); opacity: 0.7; }
+  to { transform: translateX(-50%) scaleY(1.3); opacity: 1; }
+}
+@keyframes astro-launch {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-1200px) scale(0);
+    opacity: 0;
+  }
+}
+@keyframes planet-float {
+  0% { transform: translateY(0) rotate(0deg);}
+  50% { transform: translateY(-20px) rotate(180deg);}
+  100% { transform: translateY(0) rotate(360deg);}
+}
+@keyframes nebula-move {
+  from { transform: translate(0,0) scale(1);}
+  to { transform: translate(50px, -50px) scale(1.2);}
+}
+@keyframes pulse-glow {
+  from { text-shadow: 0 0 10px rgba(0,200,255,0.4), 0 0 20px rgba(0,200,255,0.2);}
+  to   { text-shadow: 0 0 25px rgba(0,200,255,0.9), 0 0 45px rgba(0,200,255,0.7);}
+}
+@keyframes eye-blink { 0%,90%,100% { transform: scaleY(1);} 80%,95% { transform: scaleY(0.2);} }
+@keyframes eye-look {
+  0%,100% { transform: translate(0, 0);} 15% { transform: translate(-6px,0);}
+  30% { transform: translate(6px,0);} 45% { transform: translate(0,-7px);}
+  60% { transform: translate(0,4px);} 75% { transform: translate(-6px,-4px);}
+  90% { transform: translate(4px,2px);}
+}
+@keyframes glass-shine { 0%,100% {opacity:.3; transform:translateX(-100%) rotate(-45deg);} 50% {opacity:.8; transform:translateX(100%) rotate(-45deg);} }
+@keyframes reflection-move { 0%,100% {transform:translate(0,0);} 50% {transform:translate(5px,5px);} }
+@keyframes blink { 0%,100% {opacity:.3;} 50% {opacity:1;} }
+@keyframes stars-rotate { from {transform: rotate(0deg);} to {transform: rotate(360deg);} }
+@keyframes meteor-move { 0% {transform:translate(0,0) rotate(45deg); opacity:0;} 20%{opacity:1;} 80%{opacity:1;} 100%{transform:translate(400px,400px) rotate(45deg); opacity:0;} }
+@keyframes blackhole-grow {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  40% { opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(15); opacity: 1; }
+}
+@keyframes sucked-in {
+  0% { transform: scale(1); filter: blur(0px); opacity: 1; }
+  100% { transform: scale(0); filter: blur(20px); opacity: 0; }
+}
+
+
+/* 🌟 Hero Text */
+.hero-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2000;
+  pointer-events: none;
+}
+
+.hero-title {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: hero-fade-in 2s ease-out;
+}
+
+.hero-line-1 {
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+  letter-spacing: 0.5em;
+  color: rgba(0, 200, 255, 0.9);
+  text-shadow: 
+    0 0 10px rgba(0, 200, 255, 0.8),
+    0 0 20px rgba(0, 200, 255, 0.6),
+    0 0 30px rgba(0, 200, 255, 0.4),
+    0 0 40px rgba(0, 200, 255, 0.3);
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.hero-line-2 {
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-family: "Courier New", monospace;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  background: linear-gradient(45deg, #00ffff, #00ff88, #0088ff, #00ffff);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 20px rgba(0, 200, 255, 0.8))
+          drop-shadow(0 0 40px rgba(0, 200, 255, 0.6));
+  animation: gradient-shift 4s ease infinite, float-text 6s ease-in-out infinite;
+}
+
+.hero-subtitle {
+  font-size: clamp(0.8rem, 2vw, 1.2rem);
+  font-family: "Courier New", monospace;
+  letter-spacing: 0.3em;
+  color: rgba(0, 255, 136, 0.8);
+  text-shadow: 
+    0 0 10px rgba(0, 255, 136, 0.6),
+    0 0 20px rgba(0, 255, 136, 0.4);
+  margin-top: 10px;
+  animation: flicker 0.15s infinite;
+}
+
+/* Hero Animations */
+@keyframes hero-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-fade-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    text-shadow: 
+      0 0 10px rgba(0, 200, 255, 0.8),
+      0 0 20px rgba(0, 200, 255, 0.6),
+      0 0 30px rgba(0, 200, 255, 0.4);
+  }
+  50% {
+    text-shadow: 
+      0 0 20px rgba(0, 200, 255, 1),
+      0 0 30px rgba(0, 200, 255, 0.8),
+      0 0 40px rgba(0, 200, 255, 0.6),
+      0 0 50px rgba(0, 200, 255, 0.4);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float-text {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 0.8;
+  }
+  20%, 24%, 55% {
+    opacity: 0.3;
+  }
+}
+
+/* Responsive Hero Text */
+@media (max-width: 768px) {
+  .hero-container {
+    top: 40%;
+  }
+  
+  .hero-line-1 {
+    letter-spacing: 0.3em;
+  }
+  
+  .hero-line-2 {
+    letter-spacing: 0.15em;
+  }
+  
+  .hero-subtitle {
+    letter-spacing: 0.2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-container {
+    top: 35%;
+  }
+  
+  .hero-title {
+    gap: 5px;
+  }
+}
+
+
+
+
+/* Close button */
+

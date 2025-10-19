@@ -1,0 +1,454 @@
+.planet-red {
+  width: 80px; 
+  height: 80px;
+  background: radial-gradient(circle at 30% 30%, #a00117, #e85d04, #fc172e);
+  bottom: 10%; 
+  right: 20%;
+  animation-duration: 70s;
+  transform: rotateX(60deg);
+}
+
+/* Responsive planet sizing */
+@media (max-width: 1200px) {
+  .planet-red {
+    width: 70px;
+    height: 70px;
+    right: 18%;
+  }
+}
+
+@media (max-width: 768px) {
+  .planet-red {
+    width: 60px;
+    height: 60px;
+    right: 12%;
+    bottom: 8%;
+  }
+}
+
+@media (max-width: 480px) {
+  .planet-red {
+    width: 45px;
+    height: 45px;
+    right: 8%;
+    bottom: 6%;
+  }
+}
+
+/* Projects Popup - Fully Responsive */
+.planet2-popup .modal-content {
+  background: rgba(20, 15, 35, 0.7);
+  border: 2px solid rgba(255, 0, 150, 0.6);
+  border-radius: 20px;
+  padding: 30px;
+  width: 75%;
+  max-width: 850px;
+  margin: 5% auto;
+  text-align: center;
+  font-family: "Orbitron", sans-serif;
+  color: #ffe6ff;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 40px rgba(255, 0, 200, 0.6), inset 0 0 30px rgba(180, 0, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  animation: holoCardFade 0.8s ease-out;
+}
+
+@media (max-width: 1024px) {
+  .planet2-popup .modal-content {
+    width: 88%;
+    padding: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .planet2-popup .modal-content {
+    width: 92%;
+    padding: 20px;
+    border-radius: 15px;
+  }
+}
+
+@media (max-width: 640px) {
+  .planet2-popup .modal-content {
+    width: 95%;
+    max-width: 95%;
+    padding: 18px;
+    margin: 3% auto;
+    border-radius: 12px;
+    max-height: 88vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .planet2-popup .modal-content {
+    width: 96%;
+    padding: 15px;
+    margin: 2% auto;
+  }
+}
+
+/* Projects Card */
+.projects-card {
+  width: 100%;
+}
+
+.projects-card h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ff00cc;
+  text-shadow: 0 0 10px #ff00cc;
+}
+
+@media (max-width: 768px) {
+  .projects-card h2 {
+    font-size: 1.75rem;
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+}
+
+/* Carousel container - Fully Responsive */
+.projects-card .carousel {
+  overflow: hidden;
+  width: 100%;
+  margin: 20px 0;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 0, 200, 0.5);
+  box-shadow: 0 0 20px rgba(255,0,200,0.4);
+}
+
+@media (max-width: 768px) {
+  .projects-card .carousel {
+    margin: 15px 0;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-card .carousel {
+    margin: 12px 0;
+    border-radius: 8px;
+  }
+}
+
+/* Carousel track (slides row) */
+.projects-card .carousel-track {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Each carousel item - Fully Responsive */
+.projects-card .carousel-item {
+  min-width: 100%;
+  padding: 18px 24px;
+  background: rgba(255, 0, 200, 0.08);
+  border-left: 2px solid rgba(255,0,200,0.3);
+  border-right: 2px solid rgba(255,0,200,0.3);
+  text-shadow: 0 0 10px rgba(255,0,200,0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .projects-card .carousel-item {
+    padding: 15px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-card .carousel-item {
+    padding: 12px 15px;
+  }
+}
+
+.projects-card .carousel-item h3 {
+  font-size: 1.5rem;
+  margin: 10px 0;
+  color: #ff80ff;
+}
+
+@media (max-width: 768px) {
+  .projects-card .carousel-item h3 {
+    font-size: 1.3rem;
+    margin: 8px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-card .carousel-item h3 {
+    font-size: 1.1rem;
+    margin: 6px 0;
+  }
+}
+
+.projects-card .carousel-item p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+  .projects-card .carousel-item p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+}
+
+/* Carousel images - Fully Responsive with Touch Support */
+.projects-card .carousel-img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  pointer-events: auto;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.projects-card .carousel-img:hover {
+  transform: scale(1.02);
+}
+
+.projects-card .carousel-img:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+  .projects-card .carousel-img {
+    max-height: 220px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-card .carousel-img {
+    max-height: 180px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+  }
+}
+
+/* Lightbox overlay - Fully Responsive */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 12px;
+  background: rgba(0,0,0,0.90);
+  z-index: 20000;
+}
+
+.lightbox-overlay.active { 
+  display: flex; 
+}
+
+@media (max-width: 768px) {
+  .lightbox-overlay {
+    padding: 16px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .lightbox-overlay {
+    padding: 12px 6px;
+  }
+}
+
+.lightbox-content {
+  width: 100%;
+  max-width: 95%;
+  max-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  border-radius: 8px;
+  padding: 12px;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+@media (max-width: 768px) {
+  .lightbox-content {
+    max-width: 98%;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .lightbox-content {
+    max-width: 100%;
+    padding: 6px;
+    border-radius: 6px;
+  }
+}
+
+.lightbox-content img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.7);
+}
+
+@media (max-width: 480px) {
+  .lightbox-content img {
+    border-radius: 4px;
+  }
+}
+
+.lightbox-close {
+  margin-top: 12px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  min-height: 40px;
+  transition: background 0.3s ease;
+}
+
+.lightbox-close:hover { 
+  background: rgba(255,255,255,0.2); 
+}
+
+@media (max-width: 480px) {
+  .lightbox-close {
+    padding: 8px 14px;
+    font-size: 13px;
+    margin-top: 10px;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .lightbox-close {
+    min-height: 44px;
+    padding: 12px 18px;
+  }
+}
+
+/* Carousel Controls - Touch-friendly with Better Clickability */
+.projects-card .carousel-controls {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 10;
+}
+
+@media (max-width: 480px) {
+  .projects-card .carousel-controls {
+    margin-top: 12px;
+    gap: 8px;
+  }
+}
+
+.projects-card .holo-btn {
+  background: rgba(255, 0, 200, 0.1);
+  border: 1px solid #ff00cc;
+  padding: 10px 20px;
+  margin: 0 5px;
+  border-radius: 12px;
+  font-size: 1rem;
+  color: #ff80ff;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255,0,200,0.6);
+  transition: 0.3s;
+  min-height: 40px;
+  pointer-events: auto;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  position: relative;
+  z-index: 10;
+}
+
+.projects-card .holo-btn:active {
+  transform: scale(0.95);
+  background: rgba(255,0,200,0.3);
+}
+
+.projects-card .holo-btn:hover {
+  background: rgba(255,0,200,0.2);
+  box-shadow: 0 0 25px #ff00ff;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .projects-card .holo-btn {
+    padding: 9px 18px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-card .holo-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    border-radius: 10px;
+    margin: 0 3px;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .projects-card .holo-btn {
+    min-height: 44px;
+    padding: 12px 22px;
+    font-size: 1.05rem;
+  }
+}
+
+/* Animations */
+@keyframes holoCardFade {
+  from { opacity: 0; transform: translateY(-20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Landscape mobile optimization */
+@media (max-height: 500px) and (orientation: landscape) {
+  .projects-card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+  }
+  
+  .projects-card .carousel {
+    margin: 10px 0;
+  }
+  
+  .projects-card .carousel-img {
+    max-height: 140px;
+  }
+  
+  .projects-card .carousel-item {
+    padding: 10px 15px;
+  }
+  
+  .planet2-popup .modal-content {
+    padding: 12px;
+    margin: 1% auto;
+  }
+}

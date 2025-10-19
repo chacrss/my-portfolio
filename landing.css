@@ -1,0 +1,662 @@
+@font-face {
+  font-family: 'FuturisticFont';
+  src: url(assets/fonts/SupremeSpike-KVO8D.otf);
+}
+
+
+/* 🌌 General page setup */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 👨‍🚀 Astronaut */
+.astronaut {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  cursor: grab;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 10;
+}
+.astronaut:active { cursor: grabbing; }
+
+/* 🪖 Helmet */
+.astronaut-helmet {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  background: #e6e4e4;
+  border-radius: 50%;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: inset -3px -3px 8px rgba(0, 0, 0, 0.2),
+              2px 2px 4px rgba(255, 255, 255, 0.1);
+}
+.helmet-glass {
+  position: absolute;
+  width: 35px;
+  height: 25px;
+  background: linear-gradient(135deg, rgba(182,183,184,0.4), rgba(154,154,155,0.25));
+  border: 2px solid rgba(150,148,148,0.6);
+  border-radius: 50% 50% 45% 45%;
+  top: 12px;
+  left: 5px;
+  overflow: hidden;
+  box-shadow: inset 0 0 8px rgba(114,114,114,0.4);
+}
+.helmet-inner-glass {
+  position: absolute;
+  inset: 2px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 50%, rgba(0,0,0,0.1) 100%);
+  border-radius: inherit;
+  animation: glass-shine 3s ease-in-out infinite;
+}
+.helmet-reflection {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), transparent 70%);
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  animation: reflection-move 4s ease-in-out infinite;
+}
+
+/* 👀 Eyes */
+.eve-eyes {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 35px;
+  height: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.eye {
+  width: 14px;
+  height: 15px;
+  position: relative;
+  animation: eye-look 8s ease-in-out infinite;
+}
+.eye-shape {
+  width: 100%;
+  height: 70%;
+  background: radial-gradient(ellipse at center, rgba(0,200,255,0.9) 0%, rgba(0,150,255,0.6) 40%, rgba(0,80,160,0.3) 70%, transparent 100%);
+  border-radius: 50% / 60%;
+  box-shadow: 0 0 10px rgba(0,200,255,0.8),
+              0 0 20px rgba(0,200,255,0.6);
+  animation: eye-blink 4s ease-in-out infinite;
+}
+
+/* 🟦 Astronaut Body */
+.astronaut-body {
+  position: absolute;
+  width: 45px;
+  height: 55px;
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  border-radius: 25px;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: inset -4px -4px 8px rgba(0,0,0,0.2),
+              2px 2px 4px rgba(255,255,255,0.1);
+}
+
+
+
+/* 📡 Antenna */
+.antenna {
+  position: absolute;
+  width: 3px;
+  height: 15px;
+  background: #13191f;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.antenna::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #33e0ff;
+  border-radius: 50%;
+  top: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: blink 1s ease-in-out infinite;
+}
+
+/* 👨‍🚀 Landing Animation */
+.astronaut-landing {
+  animation: astronautLanding 3s ease-out forwards;
+}
+
+@keyframes astronautLanding {
+  0% {
+    transform: translate(-50%, -200%) scale(0.2);
+    opacity: 0;
+  }
+  60% {
+    transform: translate(-50%, -40%) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Base Astronaut */
+
+
+/* 🛬 Landing animation */
+@keyframes astro-land {
+  0% {
+    transform: translate(-50%, -50%) translateY(-200px) scale(0.5);
+  }
+  100% {
+    transform: translate(-50%, -50%) translateY(0) scale(1);
+  }
+}
+
+.astronaut.landing {
+  animation: astro-land 2s ease forwards;
+}
+
+
+.astronaut.landing {
+  animation: astro-land 2s ease forwards;
+}
+
+
+.astronaut.landing {
+  animation: astro-land 2.5s ease-out forwards;
+}
+
+
+.astronaut.landed .jet-flame {
+  opacity: 0;
+  transform: translateX(-50%) scaleY(0);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.astronaut.landed .wing-left,
+.astronaut.landed .wing-right,
+.astronaut.landed .triangle-booster {
+  opacity: 0;
+  transform: scaleX(0);
+  transition: all 1s ease;
+}
+
+
+/* Floating idle animation after landing */
+.astronaut.floating {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%   { transform: translate(-50%, -50%) translateY(0) scale(1); }
+  50%  { transform: translate(-50%, -50%) translateY(-20px) scale(1); }
+  100% { transform: translate(-50%, -50%) translateY(0) scale(1); }
+}
+
+
+/* After landing, floating effect */
+.astronaut.floating {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%   { transform: translate(-50%, -50%) translateY(0) scale(1); }
+  50%  { transform: translate(-50%, -50%) translateY(-20px) scale(1); }
+  100% { transform: translate(-50%, -50%) translateY(0) scale(1); }
+}
+
+
+
+/* ✨ Stars */
+.stars-container { position: absolute; inset: 0; }
+.stars {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(1px 1px at var(--star-x, 50%) var(--star-y, 50%), white 100%, transparent);
+  opacity: 0.8;
+}
+.stars-near { animation: stars-rotate 20s linear infinite; background-size: 200px 200px; }
+.stars-mid  { animation: stars-rotate 30s linear infinite reverse; background-size: 150px 150px; opacity: 0.6; }
+.stars-far  { animation: stars-rotate 40s linear infinite; background-size: 100px 100px; opacity: 0.4; }
+
+/* ☄️ Meteors */
+.meteors { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.meteor {
+  position: absolute;
+  width: 2px; height: 2px;
+  background: white;
+  border-radius: 50%;
+  filter: blur(1px);
+  top: var(--start-y, -10%);
+  left: var(--start-x, 0%);
+  animation: meteor-move linear infinite;
+  animation-duration: var(--duration, 4s);
+  animation-delay: var(--delay, 0s);
+}
+.meteor::after {
+  content: "";
+  position: absolute;
+  top: 50%; right: 0;
+  width: 120px; height: 2px;
+  background: linear-gradient(to left, white, transparent);
+  transform: translateY(-50%);
+}
+
+/* 🪐 Planets */
+.planets { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.planet {
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: inset -10px -10px 30px rgba(0,0,0,0.4),
+              0 0 40px rgba(255,255,255,0.2);
+  animation: planet-float 60s linear infinite;
+}
+
+
+
+
+/* Hover glow */
+.planet:not(.planet-earth):hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px 8px rgba(0, 200, 255, 0.8);
+  /* no brightness filter */
+}
+
+/* 🛸 Hover Info HUD */
+
+.hud-info {
+  position: absolute;
+  display: none;
+  pointer-events: none;
+  width: 400px;   /* scale HUD PNG */
+  height: auto;
+  z-index: 1000;
+}
+
+.hud-info img {
+  width: 100%;
+  height: auto;
+}
+
+.hud-text {
+  position: absolute;
+  top: 35%;      /* adjust depending on HUD design */
+  left: 40%;
+  width: 200px;
+  font-family: "FuturisticFont", sans-serif;
+  font-size: 18px;
+  color: #00eaff;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #00eaff;
+  animation: blink 0.8s step-end infinite;
+}
+
+/* typing animation (controlled by JS) */
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+
+
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+/* Example custom HUD positions & scales */
+
+
+/* typing animation (controlled by JS) */
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+
+/* 🎞️ Animations */
+@keyframes eye-blink { 0%,90%,100% { transform: scaleY(1);} 80%,95% { transform: scaleY(0.2);} }
+@keyframes eye-look {
+  0%,100% { transform: translate(0, 0);} 15% { transform: translate(-6px,0);}
+  30% { transform: translate(6px,0);} 45% { transform: translate(0,-7px);}
+  60% { transform: translate(0,4px);} 75% { transform: translate(-6px,-4px);}
+  90% { transform: translate(4px,2px);}
+}
+@keyframes glass-shine { 0%,100% {opacity:.3; transform:translateX(-100%) rotate(-45deg);} 50% {opacity:.8; transform:translateX(100%) rotate(-45deg);} }
+@keyframes reflection-move { 0%,100% {transform:translate(0,0);} 50% {transform:translate(5px,5px);} }
+@keyframes stars-rotate { from {transform: rotate(0deg);} to {transform: rotate(360deg);} }
+@keyframes meteor-move { 
+  0% {transform:translate(0,0) rotate(45deg); opacity:0;} 
+  20%{opacity:1;} 
+  80%{opacity:1;} 
+  100%{transform:translate(400px,400px) rotate(45deg); opacity:0;} 
+}
+@keyframes planet-float {
+  0% { transform: translateY(0) rotate(0deg);}
+  50% { transform: translateY(-20px) rotate(180deg);}
+  100% { transform: translateY(0) rotate(360deg);}
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center, #0b0033 0%, #000010 100%);
+  font-family: "Poppins", sans-serif;
+}
+
+/* 🌌 Stars */
+.stars {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.2; }
+  to { opacity: 1; }
+}
+
+/* 🌈 Nebula Clouds */
+.nebula {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,0,255,0.2) 0%, transparent 70%);
+  filter: blur(120px);
+  animation: swirl 20s infinite alternate ease-in-out;
+}
+
+.nebula-1 { top: 10%; left: 20%; background: radial-gradient(circle, rgba(0,200,255,0.25), transparent 70%); }
+.nebula-2 { bottom: 15%; right: 15%; background: radial-gradient(circle, rgba(255,0,150,0.25), transparent 70%); }
+
+@keyframes swirl {
+  from { transform: rotate(0deg) scale(1); opacity: 0.6; }
+  to { transform: rotate(360deg) scale(1.3); opacity: 0.8; }
+}
+
+
+
+
+
+
+/* 👨‍🚀 Astronaut floating */
+.astronaut {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -200%) scale(0.2); /* 🚀 start off-screen */
+  opacity: 0;
+}
+.floating {
+  animation: float 6s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  from { transform: translate(-50%, -50%) translateY(-15px); }
+  to { transform: translate(-50%, -50%) translateY(15px); }
+}
+
+
+.stars {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.2; }
+  to { opacity: 1; }
+}
+/* 🌞 Sun with animated glow */
+
+
+/* ==== Popup Modal ==== */
+/* ==== Modal Overlay ==== */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 9999; /* SUPER HIGH to stay above planets */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 30, 0.8);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* ==== Modal Box ==== */
+.modal-content {
+  background: rgba(20, 20, 40, 0.95);
+  border: 2px solid cyan;
+  border-radius: 15px;
+  padding: 20px;
+  width: 60%;
+  max-width: 700px;
+  margin: 10% auto;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 0 25px cyan;
+  animation: slideDown 0.5s ease;
+  position: relative;
+  z-index: 10000;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: cyan;
+  transition: 0.2s;
+}
+.close-btn:hover {
+  color: #ff4d4d;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+@keyframes slideDown {
+  from {transform: translateY(-50px); opacity: 0;}
+  to {transform: translateY(0); opacity: 1;}
+}
+
+/* --- 🪐 POPUP SCROLLING STYLES --- */
+/* === Base Popup === */
+/* 🪟 Popup container scrollable */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  overflow: auto;
+  backdrop-filter: blur(10px);
+}
+
+.modal-content {
+  background: rgba(15, 20, 35, 0.95);
+  border: 2px solid #00ffff55;
+  border-radius: 18px;
+  padding: 25px;
+  max-width: 850px;
+  max-height: 85vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+  scroll-behavior: smooth;
+  animation: popupGlow 1.2s ease-out;
+}
+
+/* 🌟 Scrollbar — Futuristic Glow Style */
+.modal-content::-webkit-scrollbar {
+  width: 12px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.1);
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00ffff, #0077ff);
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00ffffaa, 0 0 20px #00ffff55;
+  animation: glowPulse 2s infinite alternate;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #00ffff, #00ccff);
+  box-shadow: 0 0 20px #00ffff, 0 0 30px #00ffffaa;
+}
+
+/* ✨ Animations */
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 8px #00ffff88, 0 0 16px #00ffff44;
+  }
+  100% {
+    box-shadow: 0 0 15px #00ffffcc, 0 0 30px #00ffff77;
+  }
+}
+
+@keyframes popupGlow {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+    box-shadow: 0 0 0 rgba(0, 255, 255, 0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+  }
+}
+
+
+/* === Unique Planet Styles === */
+/* ==== About Me Popup (Planet 1) ==== */
+/* ===== About Me Holographic Card ===== */
+
+
+
+
+/* ===== Projects Popup ===== */
+
+/* ===== Contact Popup ===== */ 
+
+
+
+/* 👨‍🚀 Peek Astronaut (clone) */
+.astro-peek {
+  position: absolute !important;
+  right: -80px;
+  bottom: 20%;
+  transform: scale(0.8) rotate(10deg);
+  opacity: 0;
+  animation: astroPeekIn 1s ease-out forwards, astroFloat 4s ease-in-out infinite 1s;
+  filter: drop-shadow(0 0 25px rgba(0, 255, 255, 0.7));
+  z-index: 9999;
+  pointer-events: none; /* so clicks go through */
+}
+
+/* Slide + fade in */
+@keyframes astroPeekIn {
+  0% {
+    opacity: 0;
+    transform: translateX(100px) scale(0.8) rotate(10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(0.8) rotate(10deg);
+  }
+}
+
+/* Gentle floating effect */
+@keyframes astroFloat {
+  0% { transform: translateY(0) scale(0.8) rotate(10deg); }
+  50% { transform: translateY(-10px) scale(0.8) rotate(8deg); }
+  100% { transform: translateY(0) scale(0.8) rotate(10deg); }
+}
+
+/* ---- JS-driven utilities ---- */
+/* Make modal visible when JS toggles the 'open' class */
+.modal.open {
+  display: flex; /* uses flex so content can center */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Add a body utility class to lock scrolling when overlays are open */
+body.overlay-open {
+  overflow: hidden !important;
+}
+
+/* Lightbox overlay (singleton). JS will add/remove the 'active' class */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10000; /* sits above modal */
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(6px);
+  justify-content: center;
+  align-items: center;
+}
+.lightbox-overlay.active {
+  display: flex;
+}
+.lightbox-content {
+  max-width: 92%;
+  max-height: 90vh;
+  overflow: auto;
+  border-radius: 10px;
+  padding: 12px;
+}
+.lightbox-img {
+  display: block;
+  max-width: 100%;
+  max-height: 80vh;
+  margin: 0 auto;
+}
+
+/* Make the Sun icon tray non-interactive by default so it doesn't block other UI */
+.sun-icons {
+  pointer-events: none;
+}
+.sun-icons.visible {
+  pointer-events: auto;
+}
+
+
